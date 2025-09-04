@@ -1,0 +1,12 @@
+docker build -t na21011-server-php .
+docker run -d -p 8080:80 -v "C:\Users\yaaht\examen_parcial:/var/www/html" --name na21011-contenedor-server na21011-server-php
+docker logs na21011-contenedor-server
+ git init
+git remote add origin https://github.com/YANA021/Examen_parcialTPI.git
+git add .
+PS C:\Users\yaaht\examen_parcial> git commit -m "Agregando archivos php y dockerfile al repositorio"
+git branch -M main
+git push -u origin main
+git tag -a v1.0.0 -m "Esta etiqueta hace referencia al commit donde agregue mis archivos php  y dockerfile" 
+git push origin v1.0.0
+git push origin --tags
