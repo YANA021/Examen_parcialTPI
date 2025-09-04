@@ -13,3 +13,20 @@ $P = [
   ['img'=>'imagenes/img4.jpg','nom'=>'Burro','cat'=>'amigos','desc'=>'Burro o donkey amigo del protagonista.'],
   ['img'=>'imagenes/img5.jpg','nom'=>'jengibre','cat'=>'amigos','desc'=>'galleta de jengibre.'],
 ];
+
+$cat = $_GET['cat'] ?? 'todas';
+$lista = array_filter($pers, fn($p)=>$cat==='todas' || $p['cat']===$cat);
+?>
+<!doctype html><meta charset="utf-8"><title>Personajes</title>
+<nav>
+  <?php foreach($cats as $k=>$v): ?>
+    <a href="?cat=<?=$k?>"><?=$v?></a>
+  <?php endforeach; ?>
+</nav>
+<h3>Mostrando <?=count($lista)?></h3>
+<?php foreach($lista as $p): ?>
+  <div>
+    <img src="<?=$p['img']?>" width="120"><br>
+    <b><?=$p['nom']?></b> (<?=$cats[$p['cat']]?>)
+  </div>
+<?php endforeach; ?>
